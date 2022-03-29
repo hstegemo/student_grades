@@ -126,7 +126,7 @@ const EditStudent = ({route}) => {
 			<DataTable.Row>
         <DataTable.Cell>First Name</DataTable.Cell>
         <DataTable.Cell>
-          <TextInput placeholder="fName" onChangeText={(text) => { setFName(text) }} value={fName}></TextInput>
+          <TextInput editMode="cell" placeholder="fName" onChangeText={(text) => { setFName(text) }}>{fName}</TextInput>
         </DataTable.Cell>
         <DataTable.Cell>
           <Button title='Edit' onPress={() => {
@@ -141,7 +141,7 @@ const EditStudent = ({route}) => {
       <DataTable.Row>
         <DataTable.Cell>lName</DataTable.Cell>
           <DataTable.Cell>
-            <TextInput placeholder='Last Name' onChangeText={(text) => { setLName(text) }} value={lName}></TextInput>
+            <TextInput placeholder='Last Name' onChangeText={(text) => { setLName(text) }}>{lName}</TextInput>
           </DataTable.Cell>
           <DataTable.Cell>
             <Button title='Edit' onPress={() => {
@@ -156,7 +156,7 @@ const EditStudent = ({route}) => {
         <DataTable.Row>
           <DataTable.Cell>DOB</DataTable.Cell>
           <DataTable.Cell>
-            <TextInput placeholder='Date of Birth' onChangeText={(text) => { setDOB(text) }} value={DOB}></TextInput>
+            <TextInput placeholder='Date of Birth' onChangeText={(text) => { setDOB(text) }}>{DOB}</TextInput>
           </DataTable.Cell>
           <DataTable.Cell>
             <Button title='Edit' onPress={() => {
@@ -171,7 +171,7 @@ const EditStudent = ({route}) => {
           <DataTable.Row>
             <DataTable.Cell>329 Score</DataTable.Cell>
             <DataTable.Cell>
-              <TextInput placeholder='MGMT329 Score' onChangeText={(text) => { setMGMT329Score(text) }} value={MGMT329Score}></TextInput>
+              <TextInput placeholder='MGMT329 Score' onChangeText={(text) => { setMGMT329Score(text) }}> {MGMT329Score} </TextInput>
             </DataTable.Cell>
             <DataTable.Cell>
               <Button title='Edit' onPress={() => {
@@ -186,7 +186,7 @@ const EditStudent = ({route}) => {
           <DataTable.Row>
             <DataTable.Cell>450 Score</DataTable.Cell>
             <DataTable.Cell>
-              <TextInput placeholder='MGMT329 Grade' onChangeText={(text) => { setMGMT329Grade(text) }} value={MGMT329Grade}></TextInput>
+              <TextInput placeholder='MGMT329 Grade' onChangeText={(text) => { setMGMT329Grade(text) }}> {MGMT329Grade} </TextInput>
             </DataTable.Cell>
             <DataTable.Cell>
               <Button title='Edit' onPress={() => {
@@ -201,7 +201,7 @@ const EditStudent = ({route}) => {
           <DataTable.Row>
             <DataTable.Cell>329 Grade</DataTable.Cell>
             <DataTable.Cell>
-              <TextInput placeholder='MGMT450 Score' onChangeText={(text) => { setMGMT450Score(text) }} value={MGMT450Score}></TextInput>
+              <TextInput placeholder='MGMT450 Score' onChangeText={(text) => { setMGMT450Score(text) }}> {MGMT450Score} </TextInput>
             </DataTable.Cell>
             <DataTable.Cell>
               <Button title='Edit' onPress={() => {
@@ -216,7 +216,7 @@ const EditStudent = ({route}) => {
           <DataTable.Row>
             <DataTable.Cell>450 Grade</DataTable.Cell>
             <DataTable.Cell>
-              <TextInput placeholder='MGMT450 Grade' onChangeText={(text) => { setMGMT450Grade(text) }} value={MGMT450Grade}></TextInput>
+              <TextInput placeholder='MGMT450 Grade' onChangeText={(text) => { setMGMT450Grade(text) }}> {MGMT450Grade} </TextInput>
             </DataTable.Cell>
             <DataTable.Cell>
               <Button title='Edit' onPress={() => {

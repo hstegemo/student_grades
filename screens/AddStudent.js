@@ -19,7 +19,9 @@ const AddStudent = () => {
     const [text, setText] = useState("");
 
     const CreateStudent = () => {
-        const myDoc = doc(db, "Students", "" + fname + "." + lname + "." + dob) // tester litt med custom id
+
+        var RandomNumber = Math.floor(Math.random() * 100) + 1 / 456;
+        const myDoc = doc(db, "Students", "" + fname + "." + lname + "." + (RandomNumber * dob).toFixed(4)) // ID basert på fornavn og etternavn
         
         // Your document goes here
         const docData = {
@@ -31,15 +33,12 @@ const AddStudent = () => {
         setDoc(myDoc, docData)
         // Handling promises
         .then(() => {
-            alert("document.created. fname=" + fname + ",lname=" + lname + "dob=" + dob)
+            alert("document.created. fname=" + fname + ",lname=" + lname + "dob=" + dob + new Date().getSeconds())
         })
         .catch((error) => {
             alert(error.message);
         })
-
     }
-
-
 
         return (
             <View style={styles.container}>
@@ -48,24 +47,49 @@ const AddStudent = () => {
                 style={styles.button}>
                 <Text styles={styles.buttonText}>Home</Text>
             </TouchableOpacity>
-                <TextInput placeholder="fName" value={fname} onChangeText={(text) => setFname(text)}></TextInput>
-                <TextInput placeholder="lName" value={lname} onChangeText={(text) => setLname(text)}></TextInput>
-                <TextInput placeholder="DOB" value={dob} onChangeText={(text) => setDob(text)}></TextInput>
-                <TouchableOpacity
-                    onPress={CreateStudent}
-                >
-                    <Text>Add Student</Text>
-
-                </TouchableOpacity>
-                <Button title='Add Student' onPress={() => {
-                    Create({
-                        "bio": text
+                <TextInput placeholder="First Name" onChangeText={(text) => setFname(text)}>{fname}</TextInput>
+                <TextInput placeholder="Last Name" onChangeText={(text) => setLname(text)}></TextInput>
+                <TextInput placeholder="Date of Birth" onChangeText={(text) => setDob(text)}></TextInput>
+                <Button style={styles.button} title='Add Student' onPress={() => {
+                    CreateStudent({
+                        "fName": fname,
+                        "lName": lname,
+                        "DOB": dob,
+                        "MGMT329Score": -1,
+                        "MGMT329Grade": "-1",
+                        "MGMT450Score": -1,
+                        "MGMT450Grade": "-1",
                     }, true)
-                }} disabled={text == ""}></Button>
+                }} disabled={fname == "" || lname == "" || dob == ""}></Button>
             </View>
           );
 }
 
 export default AddStudent
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    button: {
+      backgroundColor: '#0782F9',
+      width: '60%',
+      padding: 15,
+      borderRadius: 10,
+      alignItems: 'center',
+      marginTop: 40,
+    },
+    buttonOutline: {
+        backgroundColor: 'white',
+        marginTop: 5,
+        borderColor: '#0782F9',
+        borderWidth: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 16,
+    },
+  })

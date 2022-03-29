@@ -20,11 +20,13 @@ const StudentsScreen = (sid) => {
         navigation.replace("Home");
     }
 
-    const EditStudentRedir = (id) => {
-        
-        navigation.replace("EditStudent(CWaTPHH7Vu8zGjV44vVm)");
-        
-    }
+    const EditStudentRedir = (studentid) => {
+        //navigation.replace("EditStudent")
+        navigation.navigate('EditStudent', {
+          //paramKey: 'CWaTPHH7Vu8zGjV44vVm',
+          paramKey: studentid
+        })
+      }
 
     useEffect(() => {
         const getStudents = async () => {
@@ -60,10 +62,7 @@ const StudentsScreen = (sid) => {
                                 <DataTable.Cell>{student.fName}</DataTable.Cell>
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
                                 <DataTable.Cell>{student.id}</DataTable.Cell>
-                                <DataTable.Cell>
-                                    <TouchableOpacity onPress={EditStudentRedir} style={styles.button}>
-                                        <Text styles={styles.buttonText}>Add Student</Text>
-                                    </TouchableOpacity></DataTable.Cell>
+                                <DataTable.Cell><Button title="Edit" onPress={() => EditStudentRedir(student.id)}></Button></DataTable.Cell>
                             </DataTable.Row>
                 );
             })}

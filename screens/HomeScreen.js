@@ -19,10 +19,6 @@ const HomeScreen = () => {
     .catch(error => alert(error.message))
   }
 
-  const GradesScreenRedir = () => {
-    navigation.replace("AddGrades")
-  }
-
   const addStudentRedir = () => {
     navigation.replace("AddStudent")
   }
@@ -35,15 +31,14 @@ const HomeScreen = () => {
     navigation.replace("Students");
   }
 
-  const EditStudentRedir = () => {
-    //navigation.replace("EditStudent")
-    navigation.navigate('EditStudent', {
-      paramKey: 'CWaTPHH7Vu8zGjV44vVm',
-    })
-  }
-
   return (
     <View>
+      <TouchableOpacity
+          onPress={handleSignOut}
+          style={styles.button}>
+            <Text styles={styles.buttonText}>Sign Out</Text>
+
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={addStudentRedir}
           style={styles.button}>
@@ -61,13 +56,6 @@ const HomeScreen = () => {
           onPress={StudentsScreenRedir}
           style={styles.button}>
             <Text styles={styles.buttonText}>Students</Text>
-
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={EditStudentRedir}
-          style={styles.button}>
-            <Text styles={styles.buttonText}>Edit one student</Text>
 
         </TouchableOpacity>
     </View>
