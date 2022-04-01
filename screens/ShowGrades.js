@@ -41,35 +41,45 @@ const ShowGrades = () => {
                             <DataTable.Title>classId</DataTable.Title>
                             <DataTable.Title>fName</DataTable.Title>
                             <DataTable.Title>lName</DataTable.Title>
-                            <DataTable.Title>DOB</DataTable.Title>
-                            <DataTable.Title>className</DataTable.Title>
                             <DataTable.Title>Score</DataTable.Title>
                             <DataTable.Title>Grade</DataTable.Title>
                             </DataTable.Header>
                             
             {students.filter(student => student.MGMT329Score >= 0).map((student) => {
+                let student329grade='';
+
+                if(student.MGMT329Score > 0 && student.MGMT329Score < 50) {student329grade='F'}
+                else if(student.MGMT329Score >= 50 && student.MGMT329Score < 60) {student329grade='E'}
+                else if(student.MGMT329Score >= 60 && student.MGMT329Score < 70) {student329grade='D'}
+                else if(student.MGMT329Score >= 70 && student.MGMT329Score < 80) {student329grade='C'}
+                else if(student.MGMT329Score >= 80 && student.MGMT329Score < 90) {student329grade='B'}
+                else {student329grade='A'}
+
                 return (
                 <DataTable.Row>
-                                <DataTable.Cell>MGMT329</DataTable.Cell>
+                                <DataTable.Cell>329</DataTable.Cell>
                                 <DataTable.Cell>{student.fName}</DataTable.Cell>
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
-                                <DataTable.Cell>{student.DOB}</DataTable.Cell>
-                                <DataTable.Cell>Database</DataTable.Cell>
+                                <DataTable.Cell>{student329grade}</DataTable.Cell>
                                 <DataTable.Cell>{student.MGMT329Score}</DataTable.Cell>
-                                <DataTable.Cell>{student.MGMT329Grade}</DataTable.Cell>
                             </DataTable.Row>
                 );
             })}
             {students.filter(student => student.MGMT450Score > 0).map((student) => {
+                let student450grade='';
+                if(student.MGMT450Score > 0 && student.MGMT450Score < 50) {student450grade='F'}
+                else if(student.MGMT450Score >= 50 && student.MGMT450Score < 60) {student450grade='E'}
+                else if(student.MGMT450Score >= 60 && student.MGMT450Score < 70) {student450grade='D'}
+                else if(student.MGMT450Score >= 70 && student.MGMT450Score < 80) {student450grade='C'}
+                else if(student.MGMT450Score >= 80 && student.MGMT450Score < 90) {student450grade='B'}
+                else {student450grade='A'}
                 return (
                     <DataTable.Row>
-                                <DataTable.Cell>MGMT450</DataTable.Cell>
+                                <DataTable.Cell>450</DataTable.Cell>
                                 <DataTable.Cell>{student.fName}</DataTable.Cell>
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
-                                <DataTable.Cell>{student.DOB}</DataTable.Cell>
-                                <DataTable.Cell>Database</DataTable.Cell>
                                 <DataTable.Cell>{student.MGMT450Score}</DataTable.Cell>
-                                <DataTable.Cell>{student.MGMT450Grade}</DataTable.Cell>
+                                <DataTable.Cell>{student450grade}</DataTable.Cell>
                             </DataTable.Row>
                 );
             })}

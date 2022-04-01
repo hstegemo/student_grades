@@ -15,9 +15,7 @@ const EditStudent = ({route}) => {
   const [DOB, setDOB] = useState("");
   // Classes
   const [MGMT329Score, setMGMT329Score] = useState('');
-  const [MGMT329Grade, setMGMT329Grade] = useState('');
   const [MGMT450Score, setMGMT450Score] = useState("");
-  const [MGMT450Grade, setMGMT450Grade] = useState("");
 
   const [taskItems, setTaskItems] = useState([]);
 
@@ -65,8 +63,6 @@ const EditStudent = ({route}) => {
                 setDOB(object.DOB);
                 setMGMT329Score(object.MGMT329Score);
                 setMGMT450Score(object.MGMT450Score);
-                setMGMT329Grade(object.MGMT329Grade);
-                setMGMT450Grade(object.MGMT450Grade);
               }
             }
             //alert(JSON.stringify(notesList));
@@ -186,47 +182,18 @@ const EditStudent = ({route}) => {
           <DataTable.Row>
             <DataTable.Cell>450 Score</DataTable.Cell>
             <DataTable.Cell>
-              <TextInput placeholder='MGMT329 Grade' onChangeText={(text) => { setMGMT329Grade(text) }}> {MGMT329Grade} </TextInput>
-            </DataTable.Cell>
-            <DataTable.Cell>
-              <Button title='Edit' onPress={() => {
-                Update({
-                  "MGMT329Grade": MGMT329Grade
-                  }, true)
-                }} disabled={MGMT329Grade == ""}>
-              </Button>
-            </DataTable.Cell>
-          </DataTable.Row>
-
-          <DataTable.Row>
-            <DataTable.Cell>329 Grade</DataTable.Cell>
-            <DataTable.Cell>
               <TextInput placeholder='MGMT450 Score' onChangeText={(text) => { setMGMT450Score(text) }}> {MGMT450Score} </TextInput>
             </DataTable.Cell>
             <DataTable.Cell>
               <Button title='Edit' onPress={() => {
                 Update({
-                "MGMT450Score": MGMT450Score
-                }, true)
+                  "MGMT450Score": MGMT450Score
+                  }, true)
                 }} disabled={MGMT450Score == ""}>
               </Button>
             </DataTable.Cell>
           </DataTable.Row>
 
-          <DataTable.Row>
-            <DataTable.Cell>450 Grade</DataTable.Cell>
-            <DataTable.Cell>
-              <TextInput placeholder='MGMT450 Grade' onChangeText={(text) => { setMGMT450Grade(text) }}> {MGMT450Grade} </TextInput>
-            </DataTable.Cell>
-            <DataTable.Cell>
-              <Button title='Edit' onPress={() => {
-                Update({
-                  "MGMT450Score": MGMT450Grade
-                }, true)
-                }} disabled={MGMT450Grade == ""}>
-              </Button>
-            </DataTable.Cell>
-          </DataTable.Row>
 		</DataTable>
   </View>    
   );

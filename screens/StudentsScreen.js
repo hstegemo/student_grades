@@ -61,7 +61,7 @@ const StudentsScreen = (sid) => {
                 <DataTable.Row>
                                 <DataTable.Cell>{student.fName}</DataTable.Cell>
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
-                                <DataTable.Cell>{student.id}</DataTable.Cell>
+                                <DataTable.Cell>{student.DOB}</DataTable.Cell>
                                 <DataTable.Cell><Button title="Edit" onPress={() => EditStudentRedir(student.id)}></Button></DataTable.Cell>
                             </DataTable.Row>
                 );

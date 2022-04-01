@@ -21,19 +21,28 @@ const AddStudent = () => {
     const CreateStudent = () => {
 
         var RandomNumber = Math.floor(Math.random() * 100) + 1 / 456;
-        const myDoc = doc(db, "Students", "" + fname + "." + lname + "." + (RandomNumber * dob).toFixed(4)) // ID basert på fornavn og etternavn
+        var customId = fname + "." + lname + "." + (RandomNumber * 3.14).toFixed(4);
+        const myDoc = doc(db, "Students", customId)
         
         // Your document goes here
         const docData = {
             "fName": fname,
             "lName": lname,
-            "DOB": dob
+            "DOB": dob,
+            "MGMT329Score": -0.1,
+            "MGMT450Score": -0.1,
         }
+
+        const EditStudentRedir = (studentid) => {
+            navigation.navigate('EditStudent', {
+              paramKey: studentid
+            })
+          }
         
         setDoc(myDoc, docData)
         // Handling promises
         .then(() => {
-            alert("document.created. fname=" + fname + ",lname=" + lname + "dob=" + dob + new Date().getSeconds())
+            EditStudentRedir(customId);
         })
         .catch((error) => {
             alert(error.message);
@@ -56,9 +65,7 @@ const AddStudent = () => {
                         "lName": lname,
                         "DOB": dob,
                         "MGMT329Score": -1,
-                        "MGMT329Grade": "-1",
                         "MGMT450Score": -1,
-                        "MGMT450Grade": "-1",
                     }, true)
                 }} disabled={fname == "" || lname == "" || dob == ""}></Button>
             </View>

@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../firebaseConfig'
 import { useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import GradesChartScreen from './GradesChart'
 
 const HomeScreen = () => {
 
@@ -25,6 +26,10 @@ const HomeScreen = () => {
 
   const ShowGradesRedir = () => {
     navigation.replace("ShowGrades");
+  }
+
+  const GradesChartScreenRedir = () => {
+    navigation.replace("GradesChart");
   }
 
   const StudentsScreenRedir = () => {
@@ -51,6 +56,14 @@ const HomeScreen = () => {
             <Text styles={styles.buttonText}>Grades list</Text>
 
         </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={GradesChartScreenRedir}
+          style={styles.button}>
+            <Text styles={styles.buttonText}>Grades chart</Text>
+
+        </TouchableOpacity>
+
 
         <TouchableOpacity
           onPress={StudentsScreenRedir}
