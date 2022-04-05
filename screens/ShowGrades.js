@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { db } from '../firebaseConfig';
@@ -14,8 +14,8 @@ const ShowGrades = () => {
 
 
     const navigation = useNavigation();
-    const HomeScreenRedir = () => {
-      navigation.replace("Home");
+    const MenuScreenRedir = () => {
+      navigation.replace("Menu");
       }
   
 
@@ -29,11 +29,11 @@ const ShowGrades = () => {
           } ,[]);
 
     return (
-        <View>
+        <ScrollView>
             <TouchableOpacity
-                onPress={HomeScreenRedir}
+                onPress={MenuScreenRedir}
                 style={styles.button}>
-                <Text styles={styles.buttonText}>Go Home</Text>
+                <Text styles={styles.buttonText}>Menu</Text>
             </TouchableOpacity>
             <View>
                         <DataTable>
@@ -45,7 +45,7 @@ const ShowGrades = () => {
                             <DataTable.Title>Grade</DataTable.Title>
                             </DataTable.Header>
                             
-            {students.filter(student => student.MGMT329Score >= 0).map((student) => {
+            {students.filter(student => student.MGMT329Score >= 0).sort((a,b) => a.fName + a.lName > b.fName + b.lName).map((student) => {
                 let student329grade='';
 
                 if(student.MGMT329Score > 0 && student.MGMT329Score < 50) {student329grade='F'}
@@ -86,7 +86,7 @@ const ShowGrades = () => {
             </DataTable>
             </View>
             
-        </View>
+        </ScrollView>
     );
 }
 

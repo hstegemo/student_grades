@@ -14,7 +14,7 @@ const GradesChartScreen = () => {
 
     const usersCollectionRef = collection(db, "Students");
     const navigation = useNavigation();
-    const HomeScreenRedir = () => { navigation.replace("Home"); }
+    const MenuScreenRedir = () => { navigation.replace("Menu"); }
 
         useEffect(() => {
             const getStudents = async () => {
@@ -46,9 +46,9 @@ const GradesChartScreen = () => {
     return (
         <View>
         <TouchableOpacity
-            onPress={HomeScreenRedir}
+            onPress={MenuScreenRedir}
             style={styles.button}>
-            <Text styles={styles.buttonText}>Go Home</Text>
+            <Text styles={styles.buttonText}>Menu</Text>
         </TouchableOpacity>
       
 <Text>MGMT450 Scores</Text>

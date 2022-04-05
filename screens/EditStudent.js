@@ -24,8 +24,8 @@ const EditStudent = ({route}) => {
   const studentid = route.params.paramKey;
 
   const navigation = useNavigation();
-  const HomeScreenRedir = () => {
-    navigation.replace("Home");
+  const MenuScreenRedir = () => {
+    navigation.replace("Menu");
     }
 
  
@@ -96,7 +96,7 @@ const EditStudent = ({route}) => {
 
   const Delete = () => {
     // MARK: Deleting Doc
-    const myDoc = doc(db, "Student", studentid)
+    const myDoc = doc(db, "Students", studentid)
 
     deleteDoc(myDoc)
       // Handling Promises
@@ -112,11 +112,11 @@ const EditStudent = ({route}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <TouchableOpacity
-        onPress={HomeScreenRedir}
+        onPress={MenuScreenRedir}
         style={styles.button}>
-        <Text styles={styles.buttonText}>Home</Text>
+        <Text styles={styles.buttonText}>Menu</Text>
       </TouchableOpacity>
 	  <DataTable>
 			<DataTable.Row>
@@ -192,6 +192,15 @@ const EditStudent = ({route}) => {
                 }} disabled={MGMT450Score == ""}>
               </Button>
             </DataTable.Cell>
+          </DataTable.Row>
+
+          <DataTable.Row>
+            <DataTable.Cell></DataTable.Cell>
+            <DataTable.Cell>
+              <Button title='Delete User' onPress={Delete}>
+              </Button>
+            </DataTable.Cell>
+            <DataTable.Cell></DataTable.Cell>
           </DataTable.Row>
 
 		</DataTable>

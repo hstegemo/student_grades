@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Button, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, Button, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { db } from '../firebaseConfig';
@@ -16,14 +16,18 @@ const StudentsScreen = (sid) => {
 
     const navigation = useNavigation();
 
-    const HomeScreenRedir = () => {
-        navigation.replace("Home");
+    const MenuScreenRedir = () => {
+        navigation.replace("Menu");
     }
 
     const EditStudentRedir = (studentid) => {
-        //navigation.replace("EditStudent")
         navigation.navigate('EditStudent', {
-          //paramKey: 'CWaTPHH7Vu8zGjV44vVm',
+          paramKey: studentid
+        })
+      }
+
+      const DeleteStudentRedir = (studentid) => {
+        navigation.navigate('DeleteStudent', {
           paramKey: studentid
         })
       }
@@ -40,11 +44,11 @@ const StudentsScreen = (sid) => {
         } ,[]);
 
     return (
-        <View>
+        <ScrollView>
             <TouchableOpacity
-                onPress={HomeScreenRedir}
+                onPress={MenuScreenRedir}
                 style={styles.button}>
-                <Text styles={styles.buttonText}>Home</Text>
+                <Text styles={styles.buttonText}>Menu</Text>
             </TouchableOpacity>
             <View>
                         <DataTable>
@@ -53,9 +57,10 @@ const StudentsScreen = (sid) => {
                             <DataTable.Title>lName</DataTable.Title>
                             <DataTable.Title>DOB</DataTable.Title>
                             <DataTable.Title></DataTable.Title>
+                            <DataTable.Title></DataTable.Title>
                             </DataTable.Header>
 
-            {students.map((student) => {
+            {students.sort((a, b) => a.fName + a.lName > b.fName + b.lName).map((student) => {
                 const myStudent = student;
                 return (
                 <DataTable.Row>
@@ -63,13 +68,14 @@ const StudentsScreen = (sid) => {
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
                                 <DataTable.Cell>{student.DOB}</DataTable.Cell>
                                 <DataTable.Cell><Button title="Edit" onPress={() => EditStudentRedir(student.id)}></Button></DataTable.Cell>
+                                <DataTable.Cell><Button title="Delete" onPress={() => DeleteStudentRedir(student.id)}></Button></DataTable.Cell>
                             </DataTable.Row>
                 );
             })}
             </DataTable>
             </View>
             
-        </View>
+        </ScrollView>
     );
 }
 

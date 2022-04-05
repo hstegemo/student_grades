@@ -12,11 +12,9 @@ const AddStudent = () => {
     const [dob, setDob] = useState("");
 
     const navigation = useNavigation();
-    const HomeScreenRedir = () => {
-        navigation.replace("Home");
+    const MenuScreenRedir = () => {
+        navigation.replace("Menu");
     }
-    
-    const [text, setText] = useState("");
 
     const CreateStudent = () => {
 
@@ -52,9 +50,9 @@ const AddStudent = () => {
         return (
             <View style={styles.container}>
                    <TouchableOpacity
-                onPress={HomeScreenRedir}
+                onPress={MenuScreenRedir}
                 style={styles.button}>
-                <Text styles={styles.buttonText}>Home</Text>
+                <Text styles={styles.buttonText}>Menu</Text>
             </TouchableOpacity>
                 <TextInput placeholder="First Name" onChangeText={(text) => setFname(text)}>{fname}</TextInput>
                 <TextInput placeholder="Last Name" onChangeText={(text) => setLname(text)}></TextInput>
