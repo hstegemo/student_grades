@@ -60,22 +60,22 @@ const StudentsScreen = (sid) => {
                             <DataTable.Title></DataTable.Title>
                             </DataTable.Header>
 
-            {students.sort((a, b) => a.fName + a.lName > b.fName + b.lName).map((student) => {
-                const myStudent = student;
-                return (
-                <DataTable.Row>
-                                <DataTable.Cell>{student.fName}</DataTable.Cell>
-                                <DataTable.Cell>{student.lName}</DataTable.Cell>
-                                <DataTable.Cell>{student.DOB}</DataTable.Cell>
-                                <DataTable.Cell><Button title="Edit" onPress={() => EditStudentRedir(student.id)}></Button></DataTable.Cell>
-                                <DataTable.Cell><Button title="Delete" onPress={() => DeleteStudentRedir(student.id)}></Button></DataTable.Cell>
-                            </DataTable.Row>
-                );
-            })}
-            </DataTable>
-            </View>
-            
-        </ScrollView>
+              {students.sort((a, b) => a.fName + a.lName > b.fName + b.lName).map((student) => {
+                  const myStudent = student;
+                  return (
+                  <DataTable.Row>
+                                  <DataTable.Cell>{student.fName}</DataTable.Cell>
+                                  <DataTable.Cell>{student.lName}</DataTable.Cell>
+                                  <DataTable.Cell>{student.DOB}</DataTable.Cell>
+                                  <DataTable.Cell><Button title="Edit" onPress={() => EditStudentRedir(student.id)}></Button></DataTable.Cell>
+                                  <DataTable.Cell><Button title="Delete" onPress={() => DeleteStudentRedir(student.id)}></Button></DataTable.Cell>
+                              </DataTable.Row>
+                  );
+              })}
+              </DataTable>
+              </View>
+              
+          </ScrollView>
     );
 }
 

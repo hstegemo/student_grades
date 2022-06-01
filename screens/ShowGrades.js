@@ -60,12 +60,12 @@ const ShowGrades = () => {
                                 <DataTable.Cell>329</DataTable.Cell>
                                 <DataTable.Cell>{student.fName}</DataTable.Cell>
                                 <DataTable.Cell>{student.lName}</DataTable.Cell>
-                                <DataTable.Cell>{student329grade}</DataTable.Cell>
                                 <DataTable.Cell>{student.MGMT329Score}</DataTable.Cell>
+                                <DataTable.Cell>{student329grade}</DataTable.Cell>
                             </DataTable.Row>
                 );
             })}
-            {students.filter(student => student.MGMT450Score > 0).map((student) => {
+            {students.filter(student => student.MGMT450Score > 0).sort((a,b) => a.fName + a.lName > b.fName + b.lName).map((student) => {
                 let student450grade='';
                 if(student.MGMT450Score > 0 && student.MGMT450Score < 50) {student450grade='F'}
                 else if(student.MGMT450Score >= 50 && student.MGMT450Score < 60) {student450grade='E'}

@@ -7,6 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
+  apiKey: 
+  authDomain:
+  projectId:
+  storageBucket:
+  messagingSenderId:
+  appId:
 };
 
 // Initialize Firebase
@@ -15,32 +21,3 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 export { auth, db };
-
-/*
-// Firebase rules: 
-// Firebase in production mode (restricted / read only)
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-
-      allow read, write: if false;
-    }
-  }
-}
-
-// Firebase in test mode (unrestricted / read/write)
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2022, 4, 22);
-    }
-  }
-}
-
-
-*/
