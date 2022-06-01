@@ -1,1 +1,1 @@
-# student_grades from a lecture assignment
+# student_grades from a assignment
